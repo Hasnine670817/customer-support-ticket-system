@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AppContext } from "../Context/AppContext";
+import TicketOverview from "../Sections/TicketOverview";
 
 const Home = () => {
 
@@ -14,9 +15,9 @@ const Home = () => {
     }
 
     return (
-        <div>
-            <h2>Home: {user.length}</h2>
-        </div>
+        <main>
+            <TicketOverview></TicketOverview>
+        </main>
     );
 };
 
