@@ -1,4 +1,5 @@
 import { Children, createContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 export const AppContext = createContext(null);
 
@@ -22,8 +23,14 @@ const AppProvider = ({children}) => {
     }, []);
 
     const handleTicket = (tct) => {
-        console.log(tct);
-        setSelectedTicket([...selectedTicked, tct])
+        const exists = selectedTicked.find(t => t.id === tct.id);
+        if (exists) {
+            toast.info(`Ticket "${tct.title}" is already in Task Status!`);
+            return;
+        }
+
+        setSelectedTicket([...selectedTicked, tct]);
+        toast.success(`Ticket "${tct.title}" added to Task Status!`);
     }
 
     const value = {
