@@ -3,14 +3,16 @@ import { Children, createContext, useEffect, useState } from "react";
 export const AppContext = createContext(null);
 
 const AppProvider = ({children}) => {
-    const [user, setUser] = useState([]);
+    const [ticket, setTicket] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    const [selectedTicked, setSelectedTicket] = useState([]);
+
     useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/users')
+        fetch('/Tickets.json')
             .then(res => res.json())
             .then(data => {
-                setUser(data);
+                setTicket(data);
                 setLoading(false)
             })
             .catch(error => {
@@ -19,9 +21,16 @@ const AppProvider = ({children}) => {
             })
     }, []);
 
+    const handleTicket = (tct) => {
+        console.log(tct);
+        setSelectedTicket([...selectedTicked, tct])
+    }
+
     const value = {
-        user,
-        loading
+        ticket,
+        loading,
+        handleTicket,
+        selectedTicked
     }
 
     return (

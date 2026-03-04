@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { AppContext } from "../Context/AppContext";
 import TicketOverview from "../Sections/TicketOverview";
+import TicketsSection from "../Sections/TicketsSection";
 
 const Home = () => {
 
-    const { user, loading } = useContext(AppContext);
+    const { loading } = useContext(AppContext);
 
     if (loading) {
         return (
@@ -17,6 +18,7 @@ const Home = () => {
     return (
         <main>
             <TicketOverview></TicketOverview>
+            <TicketsSection></TicketsSection>
         </main>
     );
 };
