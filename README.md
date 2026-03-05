@@ -1,16 +1,31 @@
-# React + Vite
+# CS Ticket System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+CS – Ticket System is a modern and user-friendly ticket management dashboard designed to help teams track and manage customer support requests efficiently. Users can view customer tickets, add them to the task status list, and mark them as completed once resolved. The system dynamically updates ticket status and provides a clear overview of in-progress and resolved tasks.
 
-Currently, two official plugins are available:
+This project was built using HTML, Tailwind CSS, DaisyUI, JavaScript, and React.js to create a responsive and interactive user interface.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Live Demo
+🔗 https://cs-ticket-system67.surge.sh
 
-## React Compiler
+# FAQ
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**1) What is JSX, and why is it used?**<br>
+**Ans:** JSX (JavaScript XML) is a syntax used in React that allows developers to write HTML-like code inside JavaScript.
 
-## Expanding the ESLint configuration
+**2) What is the difference between State and Props?**<br>
+**Ans:** State is data that belongs to a component and can change over time. Props are data passed from a parent component to a child component and are read-only.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**3) What is the useState hook, and how does it work?**<br>
+**Ans:** useState is a React hook used to create and manage state in a functional component. It returns two things:
+1. The current state value
+2. A function to update the state
+
+**4) How can you share state between components in React?**<br>
+**Ans:** State can be shared between components by:
+1. Passing data using props
+2. Lifting state up to a common parent component
+3. Using Context API for global state sharing
+
+**5) How is event handling done in React?**<br>
+**Ans:** Event handling in React is done using camelCase syntax and passing a function as the event handler.
+
