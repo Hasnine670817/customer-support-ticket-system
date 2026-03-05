@@ -7,7 +7,8 @@ const AppProvider = ({children}) => {
     const [ticket, setTicket] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const [selectedTicked, setSelectedTicket] = useState([]);
+    const [selectedTicket, setSelectedTicket] = useState([]);
+    const [resolvedTickets, setResolvedTickets] = useState([]);
 
     useEffect(() => {
         fetch('/Tickets.json')
@@ -23,21 +24,35 @@ const AppProvider = ({children}) => {
     }, []);
 
     const handleTicket = (tct) => {
-        const exists = selectedTicked.find(t => t.id === tct.id);
+        const exists = selectedTicket.find(t => t.id === tct.id);
         if (exists) {
             toast.info(`Ticket "${tct.title}" is already in Task Status!`);
             return;
         }
 
-        setSelectedTicket([...selectedTicked, tct]);
+        setSelectedTicket([...selectedTicket, tct]);
         toast.success(`Ticket "${tct.title}" added to Task Status!`);
+    }
+
+    const handleCompleteBtn = (cmt) => {
+        const updatedSelected = selectedTicket.filter(t => t.id !== cmt.id);
+        setSelectedTicket(updatedSelected);
+
+        setResolvedTickets([...resolvedTickets, cmt])
+
+        const updatedTickets = ticket.filter(t => t.id !== cmt.id);
+        setTicket(updatedTickets);
+
+        toast.success(`Ticket "${cmt.title}" resolved!`);
     }
 
     const value = {
         ticket,
         loading,
         handleTicket,
-        selectedTicked
+        selectedTicket,
+        handleCompleteBtn,
+        resolvedTickets
     }
 
     return (

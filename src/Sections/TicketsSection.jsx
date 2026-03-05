@@ -4,7 +4,7 @@ import { IoCalendarClearOutline } from "react-icons/io5";
 
 const TicketsSection = () => {
 
-    const { handleTicket, ticket, selectedTicked } = useContext(AppContext);
+    const { handleTicket, ticket, selectedTicket, handleCompleteBtn, resolvedTickets } = useContext(AppContext);
     // console.log(ticket);
 
     return (
@@ -80,8 +80,8 @@ const TicketsSection = () => {
                         <div className="mb-6 md:mb-10">
                             <h4 className="text-xl lg:text-2xl font-semibold text-[#34485A] mb-2 md:mb-4">Task Status</h4>
                             <div className="flex flex-col gap-4">
-                                {selectedTicked.length > 0 ? (
-                                    selectedTicked.map(t => (
+                                {selectedTicket.length > 0 ? (
+                                    selectedTicket.map(t => (
                                         <div 
                                             key={t.id} 
                                             className="bg-white rounded-sm p-4 [box-shadow:0px_4px_16px_0px_#00000014]"
@@ -89,7 +89,7 @@ const TicketsSection = () => {
                                             <h5 className="text-sm lg:text-lg xl:text-base 2xl:text-lg font-semibold text-gray-800 truncate mb-3">
                                                 {t.title}
                                             </h5>
-                                            <button type="button" className="w-full text-center btn bg-[#02A53B] rounded-sm text-white font-semibold text-base h-[43px] border-0 hover:bg-[#066627]">Complete</button>
+                                            <button onClick={() => handleCompleteBtn(t)} type="button" className="w-full text-center btn bg-[#02A53B] rounded-sm text-white font-semibold text-base h-[43px] border-0 hover:bg-[#066627]">Complete</button>
                                         </div>
                                     ))
                                 ) : (
@@ -99,7 +99,17 @@ const TicketsSection = () => {
                         </div>
                         <div>
                             <h4 className="text-xl lg:text-2xl font-semibold text-[#34485A] mb-2 md:mb-4">Resolved Task</h4>
-                            <p className="text-sm md:text-base text-[#627382]">No resolved tasks yet.</p>
+                            <div className="flex flex-col gap-4">
+                                {resolvedTickets.length > 0 ? (
+                                    resolvedTickets.map(r => (
+                                        <div key={r.id} className="bg-[#E0E7FF] py-5 px-4 [box-shadow:0px_4px_16px_0px_#00000014] rounded-sm">
+                                            <h5 className="text-sm lg:text-lg xl:text-base 2xl:text-lg font-medium text-gray-800 truncate">{r.title}</h5>
+                                        </div>
+                                    ))
+                                ) : (
+                                    <p className="text-sm md:text-base text-[#627382]">No resolved tasks yet.</p>
+                                )}
+                            </div>
                         </div>
                     </div>
                 </div>
